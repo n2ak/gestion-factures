@@ -1,16 +1,13 @@
 package com.factures.Customer.services;
 
-import com.factures.Customer.entities.Customer;
-import com.factures.Customer.repos.CustomerRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.factures.Customer.dto.CustomerRequest;
+import com.factures.Customer.dto.CustomerResponse;
 
-public class CustomerService {
+import java.util.List;
 
-    @Autowired
-    private CustomerRepo repo;
-
-    public void register(Customer c){
-        repo.save(c);
-    }
-
+public interface CustomerService {
+    CustomerResponse save(CustomerRequest req);
+    CustomerResponse getById(CustomerRequest req);
+    List<CustomerResponse> getAll();
+    void delete(CustomerRequest req);
 }

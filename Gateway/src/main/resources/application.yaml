@@ -1,0 +1,20 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id:r1
+#          uri:http://localhost:8081/
+#          predicates:
+#            -path=/customers/**
+#        - id:r2
+#          uri:http://localhost:8083/
+#          predicates:
+#            -path=/products/**
+#        - id:r3
+#          uri:http://localhost:8082/
+#          predicates:
+#            -path=/bills/**
+#    discovery:
+#      enabled:false
+#server:
+#  port:8888

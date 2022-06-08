@@ -1,36 +1,37 @@
 package com.factures.Billing.web;
 
-import com.factures.Billing.entities.Bill;
-import com.factures.Billing.repos.BillingRepo;
+import com.factures.Billing.dto.BillingRequest;
+import com.factures.Billing.dto.BillingResponse;
+import com.factures.Billing.services.BillingServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class BillingController {
-    private BillingRepo repo;
+    private BillingServiceImpl service;
 
-    public BillingController(BillingRepo repo) {
-        this.repo = repo;
+    public BillingController(BillingServiceImpl service) {
+        this.service = service;
     }
     @GetMapping(path = "/bills")
-    public List<Bill> getCustomers(){
-        return repo.findAll();
+    public List<BillingResponse> getBills(){
+        return service.getAll();
     }
     @GetMapping(path="/bills/{id}")
-    public Bill getCustomer(Long id){
-        return repo.findById(id).get();
+    public BillingResponse getBill(@PathVariable String id){
+        return service.getById(new BillingRequest(id,null));
     }
     @PostMapping(path = "/bills")
-    public Bill addCustomer(@RequestBody Bill c){
-        return repo.save(c);
+    public BillingResponse addBill(@RequestBody BillingRequest c){
+        return service.save(c);
     }
     @PutMapping(path = "/bills/{id}")
-    public Bill updateBill(@PathVariable Long id, @RequestBody Bill c){
-        c.setId(id);
-        return repo.save(c);
+    public BillingResponse updateBill(@PathVariable BillingRequest c){
+        return service.save(c);
     }
     @DeleteMapping(path = "/bills/{id}")
-    public void deleteBill(@PathVariable Long id){
-        repo.deleteById(id);
+    public void deleteBill(@PathVariable String id){
+        service.delete(new BillingRequest(id,null));
     }
 }

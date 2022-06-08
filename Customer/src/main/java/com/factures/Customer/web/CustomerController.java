@@ -1,36 +1,36 @@
 package com.factures.Customer.web;
 
-import com.factures.Customer.entities.Customer;
-import com.factures.Customer.repos.CustomerRepo;
+import com.factures.Customer.dto.CustomerRequest;
+import com.factures.Customer.dto.CustomerResponse;
+import com.factures.Customer.services.CustomerServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 public class CustomerController {
-    private CustomerRepo repo;
+    private CustomerServiceImpl service;
 
-    public CustomerController(CustomerRepo repo) {
-        this.repo = repo;
+    public CustomerController(CustomerServiceImpl service) {
+        this.service = service;
     }
     @GetMapping(path = "/customers")
-    public List<Customer> getCustomers(){
-        return repo.findAll();
+    public List<CustomerResponse> getCustomers(){
+        return service.getAll();
     }
     @GetMapping(path="/customers/{id}")
-    public Customer getCustomer(Long id){
-        return repo.findById(id).get();
+    public CustomerResponse getCustomer(@PathVariable String id){
+        return service.getById(new CustomerRequest(id,null,null));
     }
     @PostMapping(path = "/customers")
-    public Customer addCustomer(@RequestBody Customer c){
-        return repo.save(c);
+    public CustomerResponse addCustomer(@RequestBody CustomerRequest c){
+        return service.save(c);
     }
     @PutMapping(path = "/customers/{id}")
-    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer c){
-        c.setId(id);
-        return repo.save(c);
+    public CustomerResponse updateCustomer(@PathVariable CustomerRequest c){
+        return service.save(c);
     }
     @DeleteMapping(path = "/customers/{id}")
-    public void deleteCustomer(@PathVariable Long id){
-        repo.deleteById(id);
+    public void deleteCustomer(@PathVariable String id){
+        service.delete(new CustomerRequest(id,null,null));
     }
 }
