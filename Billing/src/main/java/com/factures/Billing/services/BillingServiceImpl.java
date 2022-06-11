@@ -4,6 +4,7 @@ import com.factures.Billing.dto.BillingRequest;
 import com.factures.Billing.dto.BillingResponse;
 import com.factures.Billing.entities.Bill;
 import com.factures.Billing.entities.Customer;
+import com.factures.Billing.entities.Product;
 import com.factures.Billing.feign.CustomerService;
 import com.factures.Billing.feign.InventoryService;
 import com.factures.Billing.mappers.BillMapper;
@@ -65,7 +66,13 @@ public class BillingServiceImpl implements BillingService {
     }
     private Bill attachItems(Bill bill){
         bill.setProductItems(productItemsRepo.findAllByBillId(bill.getId()));
-        bill.getProductItems().forEach(p->p.setProduct(inventoryService.getProductById(p.getProductId())));
+        bill.getProductItems().forEach(p->{
+            Product product = null;
+            try{
+                product = inventoryService.getProductById(p.getProductId());
+            }catch(Exception e){}
+            p.setProduct(product);
+        });
         return bill;
     }
     @Override

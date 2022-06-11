@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Bean;
 import java.util.function.Supplier;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
+//@EnableDiscoveryClient
+//@EnableFeignClients
 public class FacturationsProducerApplication {
 
 	public static void main(String[] args) {

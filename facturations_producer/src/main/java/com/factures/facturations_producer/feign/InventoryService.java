@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient("INVENTORY-SERVICE")
+//@FeignClient("INVENTORY-SERVICE")
 public interface InventoryService {
     @GetMapping(value = "/products",headers = {"content-type:application/json"})
     List<Product> getAll();

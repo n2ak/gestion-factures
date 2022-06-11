@@ -1,8 +1,7 @@
-package com.factures.batchprecessing.items;
+package com.factures.batchprecessing.jobitems;
 
 import com.factures.batchprecessing.entities.Bill;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component

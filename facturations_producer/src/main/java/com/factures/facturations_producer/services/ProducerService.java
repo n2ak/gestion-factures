@@ -20,8 +20,8 @@ import java.util.function.Supplier;
 @Service
 public class ProducerService {
     @Autowired private StreamBridge bridge;
-    @Autowired private InventoryService inventoryService;
-    @Autowired private CustomerService customerService;
+    //@Autowired private InventoryService inventoryService;
+    //@Autowired private CustomerService customerService;
 
     public ProducerService(StreamBridge bridge){
         this.bridge = bridge;
@@ -56,8 +56,8 @@ public class ProducerService {
         System.out.println("-Starting sending bills");
         //products = inventoryService.getAll();
         //customers = customerService.getAll();
-        System.out.println(customers.size());
-        System.out.println(products.size());
+        //System.out.println(customers.size());
+        //System.out.println(products.size());
         return () -> {
             System.out.println("--Bill sent "+randomBill().toString());
             return randomBill();

@@ -22,10 +22,10 @@ public class AnalyticsService {
         return (input) -> input
                     .map((k, v) -> new KeyValue<>("-", 0L))
                     .groupBy((k, v) -> k, Grouped.with(Serdes.String(), Serdes.Long()))
-                    //.windowedBy(TimeWindows.of(Duration.ofSeconds(1000)))
+                    .windowedBy(TimeWindows.of(Duration.ofMillis(5000)))
                     .count()
                     .toStream()
-                    .map((k, v) -> new KeyValue<>("total des factures : ", v));
+                    .map((k, v) -> new KeyValue<>("total des factures recues les 5 dernieres secs: ", v));
 
     }
 
@@ -40,7 +40,7 @@ public class AnalyticsService {
                     return new KeyValue<>(""+v.getCustomerId(),price);
                 })
                 .groupBy((k,v) -> k, Grouped.with(Serdes.String(),Serdes.Double()))
-                //.windowedBy(TimeWindows.of(Duration.ofSeconds(5)))
+                .windowedBy(TimeWindows.of(Duration.ofMillis(5000)))
                 .reduce((c1,c2)->c1+c2)
                 .toStream()
                 .map((k,v) ->new KeyValue<>("montant total à payer pour le client '" + k + "' est:",v));
