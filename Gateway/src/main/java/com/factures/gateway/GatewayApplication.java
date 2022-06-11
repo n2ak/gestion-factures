@@ -10,7 +10,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @SpringBootApplication
 public class GatewayApplication {
 
@@ -18,7 +18,7 @@ public class GatewayApplication {
 		SpringApplication.run(GatewayApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	RouteLocator routes(RouteLocatorBuilder builder){
 		return builder
 				.routes()
@@ -28,8 +28,8 @@ public class GatewayApplication {
 				.route(r->r.path("/products/**").uri("lb://INVENTORY-SERVICE"))
 				.build();
 	}
-	/*@Bean
+	@Bean
 	DiscoveryClientRouteDefinitionLocator dynamic(ReactiveDiscoveryClient rdc, DiscoveryLocatorProperties dlp){
 		return new DiscoveryClientRouteDefinitionLocator(rdc,dlp);
-	}*/
+	}
 }
