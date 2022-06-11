@@ -1,6 +1,9 @@
-package com.factures.facturations_producer;
+package com.factures.facturations_producer.services;
 
-import lombok.Data;
+import com.factures.facturations_producer.entities.Bill;
+import com.factures.facturations_producer.entities.Customer;
+import com.factures.facturations_producer.entities.Product;
+import com.factures.facturations_producer.entities.ProductItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
@@ -23,28 +26,27 @@ public class ProducerService {
         this.bridge = bridge;
         customers = new ArrayList<>();
         products = new ArrayList<>();
-        customers.add(new Customer("c1"));
-        customers.add(new Customer("c2"));
-        customers.add(new Customer("c3"));
-
-        products.add(new Product("p1","product1",10));
-        products.add(new Product("p2","product2",20));
-        products.add(new Product("p3","product3",30));
-        products.add(new Product("p4","product4",40));
-        products.add(new Product("p5","product5",50));
+        for(int i=1;i<=3;i++){
+            customers.add(new Customer((long) i));
+        }
+        for(int i=1;i<=5;i++){
+            products.add(new Product((long) i,null,10));
+        }
     }
 
     private <T> T randomElement(List<T> list){
         Random rand = new Random();
         return list.get(rand.nextInt(list.size()));
     }
+    private int i;
     public Bill randomBill(){
         List<ProductItem> items = new ArrayList<>();
-        for (int i = 0; i < new Random().nextInt(10); i++) {
+        for (int j = 1; j < 1+new Random().nextInt(10); j++) {
+            long quantity = new Random().nextInt(30)+1;
             Product p = randomElement(products);
-            items.add(new ProductItem("p1",p.getId(),10L,p.getPrice()));
+            items.add(new ProductItem((long) -1,p.getId(),quantity,p.getPrice()*quantity));
         }
-        Bill bill = new Bill("b1",randomElement(customers).getId(),items);
+        Bill bill = new Bill((long) -1,randomElement(customers).getId(),items);
         return bill;
     }
     @Bean

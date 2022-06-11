@@ -18,7 +18,7 @@ public class CustomerController {
         return service.getAll();
     }
     @GetMapping(path="/customers/{id}")
-    public CustomerResponse getCustomer(@PathVariable String id){
+    public CustomerResponse getCustomer(@PathVariable Long id){
         return service.getById(new CustomerRequest(id,null,null));
     }
     @PostMapping(path = "/customers")
@@ -30,7 +30,7 @@ public class CustomerController {
         return service.save(c);
     }
     @DeleteMapping(path = "/customers/{id}")
-    public void deleteCustomer(@PathVariable String id){
+    public void deleteCustomer(@PathVariable Long id){
         service.delete(new CustomerRequest(id,null,null));
     }
 }

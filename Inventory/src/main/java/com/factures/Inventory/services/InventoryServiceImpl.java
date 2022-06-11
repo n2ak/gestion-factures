@@ -23,7 +23,6 @@ public class InventoryServiceImpl implements InventoryService{
 
     @Override
     public ProductResponse save(ProductRequest req) {
-        req.setId(UUID.randomUUID().toString());
         return mapper.productToProductResponse(repo.save(mapper.productRequestToProduct(req)));
     }
 

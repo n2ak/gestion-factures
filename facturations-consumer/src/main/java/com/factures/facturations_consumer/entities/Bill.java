@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data @AllArgsConstructor @NoArgsConstructor public class Bill {
-    private String id;
-    private String customerId;
+    private Long id;
+    private Long customerId;
     private List<ProductItem> productItems;
 }

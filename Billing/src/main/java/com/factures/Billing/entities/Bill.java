@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -17,10 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Bill {
-    @Id
-    private String id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String customerId;
+    private Long customerId;
     @Transient
     private Customer customer;
     @Transient @OneToMany(mappedBy = "bill")

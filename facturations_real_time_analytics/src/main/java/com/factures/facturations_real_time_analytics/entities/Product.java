@@ -1,4 +1,4 @@
-package com.factures.facturations_consumer.entities;
+package com.factures.facturations_real_time_analytics.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 class Product {
-    private String id;
+    private Long id;
     private String name;
     private double price;
 }

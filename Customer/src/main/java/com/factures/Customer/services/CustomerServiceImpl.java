@@ -23,7 +23,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerResponse save(CustomerRequest req) {
-        req.setId(UUID.randomUUID().toString());
         return mapper.customerToCustomerResponse(repo.save(mapper.customerRequestToCustomer(req)));
     }
 

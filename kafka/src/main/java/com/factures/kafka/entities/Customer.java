@@ -1,4 +1,4 @@
-package com.factures.facturations_consumer.entities;
+package com.factures.kafka.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

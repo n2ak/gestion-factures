@@ -14,7 +14,8 @@ import java.util.Date;
 @Entity
 public class Product {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private double price;
 }

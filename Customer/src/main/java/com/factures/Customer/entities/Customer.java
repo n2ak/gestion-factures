@@ -13,7 +13,8 @@ import javax.persistence.*;
 @Entity
 public class Customer {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient("BILLING-SERVICE")
 public interface BillingService {
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/bills",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     BillingResponse addBill(BillingRequest bill);
     //ResponseEntity<String> BillingResponse addBill(Bill bill);
 

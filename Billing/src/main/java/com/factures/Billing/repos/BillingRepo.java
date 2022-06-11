@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BillingRepo extends JpaRepository<Bill,String> {
-    List<Bill> findAllByCustomerId(String customerId);
+public interface BillingRepo extends JpaRepository<Bill,Long> {
+    List<Bill> findAllByCustomerId(Long customerId);
 }

@@ -18,7 +18,7 @@ public class InventoryController {
         return service.getAll();
     }
     @GetMapping(path="/products/{id}")
-    public ProductResponse getProduct(@PathVariable String id){
+    public ProductResponse getProduct(@PathVariable Long id){
         return service.getById(new ProductRequest(id,null,0));
     }
     @PostMapping(path = "/products")
@@ -30,7 +30,7 @@ public class InventoryController {
         return service.save(c);
     }
     @DeleteMapping(path = "/products/{id}")
-    public void deleteProduct(@PathVariable String id){
+    public void deleteProduct(@PathVariable Long id){
         service.delete(new ProductRequest(id,null,0));
     }
 }

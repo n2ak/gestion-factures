@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Product {
-    private String id;
+    private Long id;
     private String name;
     private double price;
 }

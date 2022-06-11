@@ -12,10 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BillingResponse {
-    private String id;
-    private double price;
-    private String customerId;
-    private List<String> productItemsId;
+    private Long id;
+    private Long customerId;
     @Transient
     private List<ProductItem> productItems;
 }
