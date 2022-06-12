@@ -20,7 +20,7 @@ public class AnalyticsService {
     @Bean
     public Function<KStream<String,Bill>,KStream<String,Long>> totalFacturations(){
         return (input) -> input
-                    .map((k, v) -> new KeyValue<>("-", 0L))
+                    .map((k, v) -> new KeyValue<>("rrrr", 0L))
                     .groupBy((k, v) -> k, Grouped.with(Serdes.String(), Serdes.Long()))
                     .windowedBy(TimeWindows.of(Duration.ofMillis(5000)))
                     .count()
@@ -43,6 +43,6 @@ public class AnalyticsService {
                 .windowedBy(TimeWindows.of(Duration.ofMillis(5000)))
                 .reduce((c1,c2)->c1+c2)
                 .toStream()
-                .map((k,v) ->new KeyValue<>("montant total à payer pour le client '" + k + "' est:",v));
+                .map((k,v) ->new KeyValue<>("montant total à payer pour le client '" + k.key() + "' est:",v));
     }
 }

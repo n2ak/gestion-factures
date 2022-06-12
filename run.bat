@@ -1,4 +1,4 @@
-SET kafka_folder="c:\kafka_2.13-3.2.0\"
+SET kafka_folder="C:\tools\kafka_2.13-3.2.0\"
 SET current=%~dp0
 CD /D %kafka_folder%
 
