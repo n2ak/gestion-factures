@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -19,6 +19,7 @@ public class BillingController {
     /*public BillingController(BillingServiceImpl service) {
         this.service = service;
     }*/
+    //@CrossOrigin(origins = "*")
     @GetMapping(path = "/bills")
     public List<BillingResponse> getBills(){
         return service.getAll();
