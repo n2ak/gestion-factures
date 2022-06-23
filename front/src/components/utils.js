@@ -1,7 +1,7 @@
 
-const BILLS = "http://localhost:8082/bills";
-const CUSTOMERS = "http://localhost:8082/customers";
-const INVENTORY = "http://localhost:8082/products";
+const BILLS = "http://localhost:8888/BILLING-SERVICE/bills";
+const CUSTOMERS = "http://localhost:8888/CUSTOMER-SERVICE/customers";
+const INVENTORY = "http://localhost:8888/INVENTORY-SERVICE/products";
 
 export async function fetchJson(url){
     const result = await fetch(url, {
@@ -11,7 +11,7 @@ export async function fetchJson(url){
     return await result.json();
 }
 function deleteRecord(url,id){
-    return fetch(url+"?id="+id,{
+    return fetch(url+"/"+id,{
         method:"DELETE"
     });
 }
@@ -31,7 +31,7 @@ export function deleteBill(id){
     return deleteRecord(BILLS,id);
 }
 export function fetchBills(){
-    return fetchJson(BILLS);
+    return fetchJson(BILLS+"?projection=ff");
 }
 export function addBill(customerId,productItems){
     return addRecord(BILLS,{customerId,productItems});
@@ -42,7 +42,7 @@ export function deleteCustomer(id){
     return deleteRecord(CUSTOMERS,id);
 }
 export function fetchCustomers(){
-    return fetchJson(CUSTOMERS);
+    return fetchJson(CUSTOMERS+"?projection=ff");
 }
 export function addCustomer(name,email){
     return addRecord(CUSTOMERS,{name,email});
@@ -53,7 +53,7 @@ export function deleteProduct(id){
     return deleteRecord(INVENTORY,id);
 }
 export function fetchProducts(){
-    return fetchJson(INVENTORY);
+    return fetchJson(INVENTORY+"?projection=ff");
 }
 export function addProduct(name,price){
     return addRecord(INVENTORY,{name,price});

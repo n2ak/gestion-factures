@@ -22,9 +22,14 @@ function AllRecords(props){
     // if(records.length===0)return <></>;
     const {titres} = props;
     const rows = toRows(records);
+    let records_ = records;
+    if(!(records instanceof Array) && records.hasOwnProperty("_embedded") && records["_embedded"].hasOwnProperty(recordTitle+"s")){
+        records_ = records["_embedded"][recordTitle+"s"];
+    }
+    console.log("records",records)
     rows.forEach(function(row,index){
         const buttons = (<>
-                            <Link to={to} state={{[recordTitle]:records[index]}}>
+                            <Link to={to} state={{[recordTitle]:records_[index]}}>
                                 <Button animated='fade'  >
                                     <Button.Content visible>
                                         <Icon name='eye' />

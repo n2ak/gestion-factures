@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.rest.core.config.Projection;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,4 +23,11 @@ public class Bill {
     private Customer customer;
     @Transient @OneToMany(mappedBy = "bill")
     private List<ProductItem> productItems;
+}
+@Projection(name="ff",types=Bill.class)
+interface CProjection{
+    public Long getId();
+    public String getCustomerId();
+    public Customer getCustomer();
+    public List<ProductItem> getProductItems();
 }

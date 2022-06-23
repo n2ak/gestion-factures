@@ -11,13 +11,14 @@ import com.factures.Billing.mappers.BillMapper;
 import com.factures.Billing.repos.BillingRepo;
 import com.factures.Billing.repos.ProductItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@ComponentScan("com.factures.Billing.mappers")
 public class BillingServiceImpl implements BillingService {
 
     @Autowired private ProductItemRepo productItemsRepo;
@@ -25,8 +26,8 @@ public class BillingServiceImpl implements BillingService {
     @Autowired private BillMapper mapper;
     @Autowired private CustomerService customerService;
     @Autowired private InventoryService inventoryService;
-
-    /*public BillingServiceImpl(ProductItemRepo productItemRepo, BillingRepo repo, BillMapper mapper, CustomerService customerService,InventoryService inventoryService) {
+    /*
+    public BillingServiceImpl(ProductItemRepo productItemRepo, BillingRepo repo, BillMapper mapper, CustomerService customerService,InventoryService inventoryService) {
         this.productItemsRepo = productItemRepo;
         this.repo = repo;
         this.mapper = mapper;

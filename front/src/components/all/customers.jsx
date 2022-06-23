@@ -6,7 +6,7 @@ function Customers(props){
     const titres = names.slice();
     titres.push("Action");
     return <AllRecords 
-                addTo="/add/bill"
+                addTo="/add/customer"
                 titres={titres}
                 toRows={toRows}
                 fetchFunc={fetchCustomers}
@@ -15,9 +15,18 @@ function Customers(props){
                 onDelete={deleteCustomer}/>;
 }
 function toRows(customers){
+    if(!(customers instanceof Array) && customers.hasOwnProperty("_embedded") && customers["_embedded"].hasOwnProperty("customers")){
+        customers = customers["_embedded"]["customers"];
+    }
     return customers.map((customer)=>{
         const row = [];
-        names.forEach((n)=>{if(customer[n])row.push(customer[n]);})
+        names.forEach((n)=>{
+            if(customer[n]){
+                row.push(customer[n]);
+            }else{
+                row.push("--");
+            }
+        })
         return row;
     });
 }

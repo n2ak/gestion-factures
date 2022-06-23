@@ -15,14 +15,14 @@ import Products from './components/all/products';
 import AddCustomer from './components/add/addCustomer';
 import AddProduct from './components/add/addProduct';
 import AddBill from './components/add/addBill';
-import SecureRoute from './components/SecuredRoute';
-import keycloak from './components/keycloak';
+// import SecureRoute from './components/SecuredRoute';
+// import keycloak from './components/keycloak';
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ReactKeycloakProvider authClient={keycloak}>
+    {/* <ReactKeycloakProvider authClient={keycloak}> */}
     <Router>
       <Container style={{ margin: 20 }}>
         <br/>
@@ -43,9 +43,9 @@ root.render(
           
           <Route exact path="/" element={<Products/>}></Route>
           <Route path="/bills" element={
-            <SecureRoute>
+            // <SecureRoute>
               <Bills />
-            </SecureRoute>
+            // </SecureRoute>
           }></Route>
           <Route path="/customers" element={<Customers />}></Route>
           <Route path="/products" element={<Products />}></Route>
@@ -61,7 +61,7 @@ root.render(
         </Routes>
       </Container>
     </Router>
-    </ReactKeycloakProvider>
+    {/* </ReactKeycloakProvider> */}
   </React.StrictMode>
 );
 

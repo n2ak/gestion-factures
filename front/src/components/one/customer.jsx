@@ -4,6 +4,7 @@ import ItemCard from './itemCard';
 
 function Customer(props){
     const state = useLocation().state;
+    console.log("state",state);
     if(!state || !state.customer) return <>Error</>
     const {id,email,name} = state.customer;
     const headers = [

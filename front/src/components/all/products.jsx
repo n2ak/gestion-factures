@@ -15,9 +15,18 @@ function Products(props){
                 onDelete={deleteProduct}/>;
 }
 function toRows(products){
+    if(!(products instanceof Array) && products.hasOwnProperty("_embedded") && products["_embedded"].hasOwnProperty("products")){
+        products = products["_embedded"]["products"];
+    }
     return products.map((product)=>{
         const row = [];
-        names.forEach((n)=>{if(product[n])row.push(product[n]);})
+        names.forEach((n)=>{
+            if(product[n]){
+                row.push(product[n]);
+            }else{
+                row.push("--");
+            }
+        })
         return row;
     });
 }

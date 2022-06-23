@@ -32,4 +32,15 @@ public class GatewayApplication {
 	DiscoveryClientRouteDefinitionLocator dynamic(ReactiveDiscoveryClient rdc, DiscoveryLocatorProperties dlp){
 		return new DiscoveryClientRouteDefinitionLocator(rdc,dlp);
 	}
+	/*
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("*");
+			}
+		};
+	}
+	 */
 }

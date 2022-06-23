@@ -29,6 +29,18 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -42,12 +54,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Eureka" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../batch-precessing" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.factures.Billing.mappers" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.factures.Billing.entities" />
     </key>
@@ -81,6 +96,8 @@
       <option name="presentableId" value="Default" />
       <updated>1653760036499</updated>
       <workItem from="1654945098043" duration="1545000" />
+      <workItem from="1655867939932" duration="141000" />
+      <workItem from="1655868830218" duration="1551000" />
     </task>
     <servers />
   </component>
